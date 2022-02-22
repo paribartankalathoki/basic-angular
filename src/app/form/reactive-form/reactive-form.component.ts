@@ -27,7 +27,7 @@ export class ReactiveFormComponent implements OnInit {
 
   onSubmitForm(form: any): void {
     this.submitted = true;
-    if (!this.reactiveForm.invalid) {
+    if (this.reactiveForm.valid) {
       console.log(form.value);
     }
   }
