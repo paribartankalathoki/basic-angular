@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailviewComponent } from './detailview/detailview.component';
 import { ReactiveFormComponent } from './form/reactive-form/reactive-form.component';
+import { TemplateDrivenFormComponent } from './form/template-driven-form/template-driven-form.component';
 import { HomeComponent } from './home/home.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TableComponent } from './table/table.component';
 
 const routes: Routes = [
   {
@@ -12,23 +15,28 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    children: [
+      {
+        path: '',
+        component: TableComponent,
+      },
+      {
+        path: 'detail-view/:id',
+        component: DetailviewComponent
+      },
+      {
+        path: 'reactive-form',
+        component: ReactiveFormComponent
+      },
+      {
+        path: 'template-driven-form',
+        component: TemplateDrivenFormComponent
+      }
+    ]
   },
   {
-    path: 'another-page',
-    component: HomeComponent
-  },
-  {
-    path: 'home/:id',
-    component: HomeComponent
-  },
-  {
-    path: 'detail-view/:id',
-    component: DetailviewComponent
-  },
-  {
-    path: 'reactive-form',
-    component: ReactiveFormComponent
+    path: '**', component: PageNotFoundComponent
   }
 ];
 

@@ -7,16 +7,23 @@ import { HomeComponent } from './home/home.component';
 import { DetailviewComponent } from './detailview/detailview.component';
 import { ReactiveFormComponent } from './form/reactive-form/reactive-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TemplateDrivenFormComponent } from './form/template-driven-form/template-driven-form.component';
+import { TableComponent } from './table/table.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DetailviewComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    TemplateDrivenFormComponent,
+    TableComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
     AppRoutingModule
   ],
