@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-form',
@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ReactiveFormComponent implements OnInit {
 
   reactiveForm: FormGroup = new FormGroup({});
-  
+  submitted: boolean = false;
   constructor(
     private form: FormBuilder
   ) { }
@@ -21,7 +21,14 @@ export class ReactiveFormComponent implements OnInit {
     });
   }
 
+  get forms(): { [key: string]: AbstractControl } {
+    return this.reactiveForm.controls;
+  }
+
   onSubmitForm(form: any): void {
-    console.log(form.value);
+    this.submitted = true;
+    if (!this.reactiveForm.invalid) {
+      console.log(form.value);
+    }
   }
 }
