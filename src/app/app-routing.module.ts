@@ -6,6 +6,10 @@ import { TemplateDrivenFormComponent } from './form/template-driven-form/templat
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TableComponent } from './table/table.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
+import { DetailsViewComponent } from './users/details-view/details-view.component';
+import { EditUsersComponent } from './users/edit-users/edit-users.component';
+import { UsersListComponent } from './users/users-list/users-list.component';
 
 const routes: Routes = [
   {
@@ -32,6 +36,22 @@ const routes: Routes = [
       {
         path: 'template-driven-form',
         component: TemplateDrivenFormComponent
+      },
+      {
+        path: 'users',
+        component: UsersListComponent,
+      },
+      {
+        path: 'add-user',
+        component: AddUserComponent,
+      },
+      {
+        path: 'edit-users/:id',
+        component:EditUsersComponent
+      },
+      {
+        path: 'users-details/:id',
+        component: DetailsViewComponent,
       }
     ]
   },

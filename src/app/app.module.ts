@@ -10,6 +10,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateDrivenFormComponent } from './form/template-driven-form/template-driven-form.component';
 import { TableComponent } from './table/table.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UsersListComponent } from './users/users-list/users-list.component';
+import { EditUsersComponent } from './users/edit-users/edit-users.component';
+import { DetailsViewComponent } from './users/details-view/details-view.component';
+import { AddUserComponent } from './users/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -19,15 +23,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ReactiveFormComponent,
     TemplateDrivenFormComponent,
     TableComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    UsersListComponent,
+    EditUsersComponent,
+    DetailsViewComponent,
+    AddUserComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
