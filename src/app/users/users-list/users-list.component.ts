@@ -51,4 +51,8 @@ export class UsersListComponent implements OnInit {
     this.router.navigate(['/home/edit-users', id]);
   }
 
+  onDeleteUser(id: any) {
+    // to do
+  }
+
 }

@@ -30,18 +30,28 @@
                     <td>{{ data.age }}</td>
                     <td>
                       <button
+                      title="Edit User Information"
                         class="btn btn-primary"
                         type="button"
                         (click)="onEditUser(data.id)"
                       >
-                        Edit
+                      <i class="fa-solid fa-pen-to-square"></i>
                       </button>
                       <button
-                        class="btn btn-primary"
+                      title="View Detail"
+                        class="btn btn-secondary"
                         type="button"
                         (click)="onDetailView(data.id, data.name, data.address, data.age)"
                       >
-                        Detail View
+                      <i class="fa-solid fa-eye"></i>
+                      </button>
+                      <button
+                      title="Delete"
+                        class="btn btn-danger"
+                        type="button"
+                        (click)="onDeleteUser(data.id)"
+                      >
+                      <i class="fa-solid fa-trash-can"></i>
                       </button>
                     </td>
                   </tr>
