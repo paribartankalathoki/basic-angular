@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://www.googleapis.com/'
+  baseUrl: 'http://api.aadiminnovation.com/'
 };

@@ -13,6 +13,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { UsersListComponent } from './users/users-list/users-list.component';
 import { EditUsersComponent } from './users/edit-users/edit-users.component';
 import { DetailsViewComponent } from './users/details-view/details-view.component';
+import { UserBackUpService } from './services/user-backup.service';
+
+import { HttpClientModule } from '@angular/common/http';
 import { AddUserComponent } from './users/add-user/add-user.component';
 
 @NgModule({
@@ -26,11 +29,17 @@ import { AddUserComponent } from './users/add-user/add-user.component';
     PageNotFoundComponent,
     UsersListComponent,
     EditUsersComponent,
-    DetailsViewComponent,
     AddUserComponent,
+    DetailsViewComponent,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
-  providers: [],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule
+  ],
+  providers: [UserBackUpService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
