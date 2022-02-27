@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { UsersListResponseModel } from '../users/models/user-list-response.model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,8 +19,8 @@ export class UserService {
     return this.httpClient.post<any>(this.baseUrl.concat(this.apiUrlEndPoint), user);
   }
 
-  listAllUsers(): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl.concat(this.apiUrlEndPoint));
+  listAllUsers(): Observable<UsersListResponseModel[]> {
+    return this.httpClient.get<UsersListResponseModel[]>(this.baseUrl.concat(this.apiUrlEndPoint));
   }
 
 }
