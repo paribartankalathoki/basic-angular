@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { UsersListResponseModel } from '../models/user-list-response.model';
 
 @Component({
   selector: 'app-users-list',
@@ -35,7 +36,8 @@ export class UsersListComponent implements OnInit {
     }
   ];
 
-  usersResponse: any | [] = [];
+  usersResponse: Array<UsersListResponseModel> = new Array<UsersListResponseModel>();
+  
   constructor(
     private router: Router,
     private userService: UserService
@@ -56,13 +58,13 @@ export class UsersListComponent implements OnInit {
     );
   }
 
-  onDetailView(id: string, paramName: string, address: string, age: number) {
+  onDetailView(id: number | undefined, paramName: string | undefined) {
     this.router.navigate(['/home/users-details', id], {
-      queryParams: {name: paramName, address: address, age: age}
+      queryParams: {name: paramName}
     });
   }
 
-  onEditUser(id: any) {
+  onEditUser(id: number | undefined) {
     this.router.navigate(['/home/edit-users', id]);
   }
 
