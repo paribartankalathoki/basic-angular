@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-details-view',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    // console.log(this.activatedRoute.snapshot.params);
+    // console.log(this.activatedRoute.snapshot.queryParams);
+    this.activatedRoute.queryParams.subscribe(
+      res => {
+        console.log('param: ', res);
+      }
+    );
   }
 
 }
