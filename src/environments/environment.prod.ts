@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://api.aadiminnovation.com/'
+  baseUrl: 'http://localhost:8080/api/'
 };

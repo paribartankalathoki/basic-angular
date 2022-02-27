@@ -18,4 +18,8 @@ export class UserService {
     return this.httpClient.post<any>(this.baseUrl.concat(this.apiUrlEndPoint), user);
   }
 
+  listAllUsers(): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl.concat(this.apiUrlEndPoint));
+  }
+
 }

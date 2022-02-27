@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class AddUserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private formBuilder: FormBuilder,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,7 @@ export class AddUserComponent implements OnInit {
     this.userService.addUsers(user).subscribe(
       (response: any) => {
         console.log(response);
+        this.router.navigate(['/home/users']);
       }, error => {
         console.error(error);
       }

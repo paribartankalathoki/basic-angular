@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-users-list',
@@ -34,11 +35,25 @@ export class UsersListComponent implements OnInit {
     }
   ];
 
+  usersResponse: any | [] = [];
   constructor(
     private router: Router,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
+    this.listUsers();
+  }
+
+  listUsers() {
+    this.userService.listAllUsers().subscribe(
+      (response: any) => {
+        console.log(response);
+        this.usersResponse = response.users;
+      }, (error: any) => {
+        console.error(error);
+      }
+    );
   }
 
   onDetailView(id: string, paramName: string, address: string, age: number) {

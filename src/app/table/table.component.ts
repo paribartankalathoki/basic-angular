@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -35,17 +34,9 @@ export class TableComponent implements OnInit {
     }
   ];
 
-  constructor(
-    private router: Router,
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-  }
-
-  onDetailView(id: string, paramName: string, address: string, age: number) {
-    this.router.navigate(['/home/detail-view', id], {
-      queryParams: {name: paramName, address: address, age: age}
-    });
   }
 
 }
