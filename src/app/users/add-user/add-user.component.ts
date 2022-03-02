@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
@@ -34,7 +34,24 @@ export class AddUserComponent implements OnInit {
       email:[undefined],
       password:[undefined],
       mobileNumber:[undefined],
+      contacts: new FormArray([])
     });
+    this.initContacts();
+  }
+
+  initContacts() {
+    (this.userForm.get('contacts') as FormArray).push(
+      this.formBuilder.group({
+        mobileNumber:[undefined],
+        id:[undefined],
+        email:[undefined],
+        userId: [undefined],
+      })
+    )
+  }
+
+  get getContactForm(): FormArray {
+    return (this.userForm.get('contacts') as FormArray);
   }
 
   onAddUser(user: any) {
@@ -50,6 +67,10 @@ export class AddUserComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  onChange(event: any) {
+    console.log(event.checked);
   }
 
 }

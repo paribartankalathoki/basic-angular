@@ -23,4 +23,12 @@ export class UserService {
     return this.httpClient.get<UsersListResponseModel[]>(this.baseUrl.concat(this.apiUrlEndPoint));
   }
 
+  getUserDetailsById(id: any): Observable<UsersListResponseModel> {
+    return this.httpClient.get<UsersListResponseModel>(this.baseUrl.concat(this.apiUrlEndPoint).concat('/' + id));
+  }
+
+  onEditUser(data: UsersListResponseModel, userId: any): Observable<UsersListResponseModel>{
+    return this.httpClient.put<UsersListResponseModel>(this.baseUrl.concat(this.apiUrlEndPoint.concat('/' + userId)), data);
+  }
+
 }

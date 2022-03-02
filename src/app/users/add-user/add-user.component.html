@@ -5,6 +5,16 @@
     </div>
   </div>
   <hr />
+  <div class="row">
+    <div class="col-sm-3">
+      <input type="checkbox" (change)="onChange($event.target)" name="singleUser" id="SingleUser" value="SINGLE_USER" />
+      SINGLE_USER
+    </div>
+    <div class="col-sm-3">
+      <input type="checkbox" (change)="onChange($event.target)" name="multiUser" id="multiUser" value="MULTIPLE_USER" />
+      MULTIPLE_USER
+    </div>
+  </div>
   <div class="row mb-3">
     <div class="col-sm-12">
       <form [formGroup]="userForm">
@@ -40,6 +50,40 @@
             </div>
           </div>
         </div>
+
+        <ng-container formArrayName="contacts"  *ngFor="let data of getContactForm?.controls; let i = index">
+          <div class="row mb-3" [formGroupName]="i">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Contact Number: <span class="text-danger">*</span> </label>
+                <input type="text" name="mobileNumber" id="mobileNumber" formControlName="mobileNumber" placeholder="Mobile Number" class="form-control" />
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label>Contact Email: <span class="text-danger">*</span> </label>
+                <input type="text" name="email" id="email" formControlName="email" placeholder="Contact Email" class="form-control" />
+              </div>
+            </div>
+
+          </div>
+        </ng-container>
+
+        <!-- <div class="row mb-3">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>DOB: <span class="text-danger">*</span> </label>
+              <input type="date" placeholder="DOB" class="form-control"/>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Age: <span class="text-danger">*</span> </label>
+              <input type="number" placeholder="age" readonly class="form-control"/>
+            </div>
+          </div>
+        </div> -->
 
         <div class="row mb-3">
           <div class="col-sm-12">
