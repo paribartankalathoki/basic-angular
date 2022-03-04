@@ -8,5 +8,8 @@ export class UsersListResponseModel {
 }
 
 export class Contacts {
-    
+    mobileNumber: string | undefined;
+    email: string | undefined;
+    id: number | undefined;
+    userId: number | undefined;
 }

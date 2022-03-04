@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UsersListResponseModel } from '../models/user-list-response.model';
@@ -35,13 +35,37 @@ export class EditUsersComponent implements OnInit {
     return this.userForm.controls;
   }
 
+  get getContactForm(): FormArray {
+    return (this.userForm.get('contacts') as FormArray);
+  }
+
   initForm() {
     this.userForm = this.formBuilder.group({
       name:[undefined],
       email:[undefined],
       password:[undefined],
       mobileNumber:[undefined],
+      contacts: new FormArray([])
     });
+  }
+
+  initContacts() {
+    (this.userForm.get('contacts') as FormArray).push(
+      this.formBuilder.group({
+        mobileNumber:[undefined],
+        id:[undefined],
+        email:[undefined],
+        userId: [undefined],
+      })
+    )
+  }
+
+  addMore() {
+    this.initContacts();
+  }
+  
+  deleteContactForm(i: number) {
+    (this.userForm.get('contacts') as FormArray).removeAt(i);
   }
 
   getUserDetailsById() {
@@ -59,6 +83,22 @@ export class EditUsersComponent implements OnInit {
       email: user.email,
       password: user.password,
       mobileNumber: user.mobileNumber,
+    });
+    
+
+    if (user.contacts.length == 0) {
+      return;
+    }
+
+    user?.contacts?.map((value) => {
+      (this.userForm.get('contacts') as FormArray).push(
+        this.formBuilder.group({
+          mobileNumber: value?.mobileNumber,
+          email: value?.email,
+          id: value?.id,
+          userId: value?.userId
+        })
+      );
     });
   }
 

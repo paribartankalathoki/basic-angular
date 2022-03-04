@@ -65,12 +65,20 @@ export class AddUserComponent implements OnInit {
     );
   }
 
+  addMore() {
+    this.initContacts();
+  }
+
   goBack() {
     this.location.back();
   }
 
   onChange(event: any) {
     console.log(event.checked);
+  }
+
+  deleteContactForm(i: number) {
+    (this.userForm.get('contacts') as FormArray).removeAt(i);
   }
 
 }
